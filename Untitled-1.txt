@@ -1,0 +1,15 @@
+<html lang="en">
+<head>
+1.selector > elemant, id, class name
+2.declaratuin >
+2.1 property > color, text-style, border, text-size,....
+2.2 value > red, #ffaabb, vold, italic, 2px, 2em, 24cm
+
+1selector > 1 declaration
+
+syntax
+div {color:red; border:2px;text-style:bold; }
+</head>
+<body>
+</body>
+</html>

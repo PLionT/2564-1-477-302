@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KK-SHOP ลงทะเบียนร้านค้า</title>
+    <style>
+        body {color: #ffeeaa;font-family: 'Prompt', sans-serif;font-size: 3em;}
+        p {font-weight: 800;}
+        a {font:normal 2em;}
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@500&display=swap" rel="stylesheet">
+    
+</head>
+<body background="1.jpg">
+    <div class="title" style="color: rgb(255, 81, 255); font-size: 24px;"> เข้าสู่ระบบ
+    <from method="Get" action="check_login.html" enctype="multipart/form-data">
+        <!-- <label for="username">รหัสผู้ใช้งาน</label> -->
+        <input type="text" id="username" placeholder="รหัสผู้ใช้งาน">
+        <br>
+        <label for="passwd">รหัสผ่าน</label>
+        <input type="password" id="passwd">
+        <br>
+        <input type="checkbox">จำรหัสผู้ใช้งาน
+        <br>
+        <input type="submit" value="เข้าสู่ระบบ">
+        <input type="reset" value="ยกเลิก">
+                    <h3>*แบบฟอร์มลงทะเบียนร้านค้าออนไลน์</h3>
+                    <h3>*กรุณากรอกข้อมูลให้ครบทุกช่อง</h3>
+                    <div class="row">
+                      <div class="col-12 col-sm-6 mb-3">
+                        <select name="firstname" class="form-control" required>
+                          <option value="">-ลักษณะร้านค้า-</option>
+                          <option value="อาคารเดี่ยว">-อาคารเดี่ยว</option>
+                          <option value="บ้าน">-บ้าน</option>
+                          <option value="ร้านแผงลอย">-ร้านแผงลอย</option>
+                          <option value="โกดัง">-โกดัง</option>
+                        </select>
+                      </div>
+                      <div class="col-12 col-sm-6 mb-3">
+                        <input type="text"  name="stdcode" class="form-control" placeholder="เบอร์โทรศัพท์ 10 หลัก"  minlength="10" maxlength="10" required>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-12 col-sm-2 mb-3">
+                        <select name="firstname" class="form-control" required>
+                          <option value="">-คำนำหน้าชื่อ-</option>
+                          <option value="นาย">-นาย</option>
+                          <option value="นางสาว">-นางสาว</option>
+                        </select>
+                      </div>
+                      <div class="col-12 col-sm-5 mb-3">
+                        <input type="text"  name="name" class="form-control" placeholder="ชื่อ" required> 
+                      </div>
+                      <div class="col-12 col-sm-5 mb-3">
+                        <input type="text" name="lastname" class="form-control" placeholder="นามสกุล" required>
+                      </div>
+                    </div>
+                        <input type="email" name="email" class="form-control" placeholder="email" required>
+                      </div>
+                    </div>
+                    <h5>บรรยายร้านค้า</h5>
+                    <textarea id="desc" rows="15"></textarea>
+                    <h5>แนบรูปร้านค้าประกอบ</h5>
+                    <input type="file"> <br>
+                    <h5>เว็บที่เกี่ยวข้อง</h5>
+                    <a href="https://shopee.co.th/?gclid=CjwKCAjw_o-HBhAsEiwANqYhp05J6CAAv289g8cOKfz9Ii68l_26qWZZBWw-2-aGTtnFi0dLxhrbdBoC1RQQAvD_BwE" target="_blank">SHOPPEE</a>
+                       <a href=”file:///D:/verus/V/2564-1-477-302/Q1/Q1.html“>บันทึกข้อมูล</a>
+                      </div>
+                    </div>
+                  </form>      
+</body>
+</html>
