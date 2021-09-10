@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="description" content="DESCRIPTION">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+    <style>
+        body{
+        background-color: #0dcaf0;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <center>
+    <div class="container-fluid">
+        <h1>You can see yourself in the map</h1>
+        <h2>Session Working!!</h2>
+    </div>
+
+    <img src="./mapphoto.png" width="10%">
+    <p id="demo">Click the button to get your position.</p>
+    <!-- <p id="result"></p> -->
+    <!-- test -->
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">จำนวนการกด&nbsp;<span id="result"></span></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="mapholder"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">ปิด</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <button onclick="getLocation()" id="click" data-bs-toggle="modal" data-bs-target="#exampleModal">See your location</button>
+    <script>
+        $(document).ready(function () {
+            $('#click').click(function (e) { 
+                e.preventDefault();
+                var map = document.getElementById("mapholder");
+                if (typeof(Storage) === "undefined") {
+                    document.getElementById("result").innerHTML = "browser ของคุณไม่รองรับ!!";
+                } else {
+                    if (localStorage.clickcount) {
+                        localStorage.clickcount = Number(localStorage.clickcount)+1;
+                    } else {
+                        localStorage.clickcount = 1;
+                    }
+                    document.getElementById("result").innerHTML = `คุณ Click ไปแล้ว&nbsp;<span style="color: red;">${localStorage.clickcount}</span>&nbsp;ครั้ง !.`;
+                }
+            }); 
+        });
+    </script>
+    
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoKoNVKdXRrp8YDgara5W1m2nfTU1dG5g&callback=initMap"
+    type="text/javascript"></script>
+    
+        <script>
+            var x = document.getElementById("demo");
+                getLocation = () => {
+                    if (navigator.geolocation) {
+                    /* glat = prompt("Enter your latitude", 0);
+                    glon = prompt("Enter your longitude", 0);
+                    showPosition(glat, glon); */
+                    console.log(navigator.geolocation)
+                    navigator.geolocation.getCurrentPosition(showPosition, showError);
+                    } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+                    }
+                }
+
+                showPosition = (position) => {
+                    lat = position.coords.latitude;
+                    lon = position.coords.longitude;
+                    //glat = [6.998068, 6.998838] ;
+                    //glon = [100.482465, 100.480831];
+                    latlon = new google.maps.LatLng(lat, lon)
+                    mapholder = document.getElementById('mapholder')
+                    mapholder.style.height = '350px';
+                    mapholder.style.width = '460px';
+
+                var myOptions = {
+                    center: latlon,
+                    zoom:16,
+                    mapTypeId:google.maps.MapTypeId.ROADMAP,
+                    mapTypeControl:false,
+                    navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL}
+                }
+
+                var map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
+                var marker = new google.maps.Marker({position:latlon, map:map, title:"You are here!"});
+                }
+
+                showError = (error) => {
+                    switch(error.code) {
+                        case error.PERMISSION_DENIED:
+                        x.innerHTML = "User denied the request for Geolocation."
+                    break;
+                    case error.POSITION_UNAVAILABLE:
+                        x.innerHTML = "Location information is unavailable."
+                    break;
+                    case error.TIMEOUT:
+                        x.innerHTML = "The request to get user location timed out."
+                    break;
+                    case error.UNKNOWN_ERROR:
+                        x.innerHTML = "An unknown error occurred."
+                    break;
+                    }
+                }
+ 
+    </script>
+</center>
+</body>
+</html>

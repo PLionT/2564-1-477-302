@@ -1,0 +1,64 @@
+<html>
+
+<head>
+    <title>แบบฟอร์มเข้าสู่ระบบ</title>
+    <meta charset="UTF-8">
+    <title>TITLE</title>
+    <meta name="description" content="DESCRIPTION">
+   <link rel="stylesheet" href="PATH">
+   <script>
+   function chkUsername() {
+       if(typeof(Storage) !== "undefined") {
+           if (localStorage.username) {
+               document.getElementById("div1").innerHTML = localStorage.username;
+           } else {
+               document.getElementById("div1").innerHTML = "<input type='text' id='username'>";
+           }
+       } else {
+           document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+       }
+   }
+   function saveUsername() {
+       uname = document.getElementById("username");
+       localStorage.username = uname.value;
+       chkUsername();
+   }
+   function delUsername() {
+       localStorage.removeItem("username");
+       chkUsername();
+   }
+   </script>
+
+</head>
+<body background="101.jpg">
+<body onload="chkUsername()">
+    <center>
+
+    User Name:<div id="div1"></div>
+    Password:<div id="div2"><input type="password" id="password"></div>
+    <p><button onclick="saveUsername()" type="button">เข้าสู่ระบบค้างไว้</button>
+        <button onclick="delUsername()" type="button">ล้าง</button></p>
+    <div id="result"></div>
+</script>
+    <br>
+    <input type="button" value="Submit" onclick="dialog()"> 
+    <input type="reset" value="Reset" onclick="document.location.reload(true)" >
+    <dialog id="dialog">กำลังเข้าสู่ระบบ
+    <br>
+    <br>
+        <button onclick="getLocation()">ตกลง</button>
+    </dialog>
+    <script>
+        function dialog() {
+          var x=document.getElementById("dialog");
+          x.open=true
+    }
+    </script>
+    <br>
+    <a href="แบบฟอร์มลงทะเบียน.html">สมัครสมาชิค</a></br>
+    
+ </center>
+    
+</body>
+
+</html>
