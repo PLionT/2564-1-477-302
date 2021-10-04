@@ -1,125 +1,329 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <meta name="description" content="DESCRIPTION">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    
-    <style>
-        body{
-        background-color: #0dcaf0;
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Quiz-2</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+      <style>
+        body {
+          color: rgb(31, 20, 16);
+          font-family: 'Prompt', sans-serif;
+          background-color: rgb(221, 205, 154); 
         }
-    </style>
-</head>
-<body>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <center>
-    <div class="container-fluid">
-        <h1>You can see yourself in the map</h1>
-        <h2>Session Working!!</h2>
-    </div>
-
-    <img src="./mapphoto.png" width="10%">
-    <p id="demo">Click the button to get your position.</p>
-    <!-- <p id="result"></p> -->
-    <!-- test -->
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">จำนวนการกด&nbsp;<span id="result"></span></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div id="mapholder"></div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">ปิด</button>
-            </div>
-            </div>
-        </div>
-    </div>
-
-    <button onclick="getLocation()" id="click" data-bs-toggle="modal" data-bs-target="#exampleModal">See your location</button>
-    <script>
-        $(document).ready(function () {
-            $('#click').click(function (e) { 
-                e.preventDefault();
-                var map = document.getElementById("mapholder");
-                if (typeof(Storage) === "undefined") {
-                    document.getElementById("result").innerHTML = "browser ของคุณไม่รองรับ!!";
-                } else {
-                    if (localStorage.clickcount) {
-                        localStorage.clickcount = Number(localStorage.clickcount)+1;
-                    } else {
-                        localStorage.clickcount = 1;
-                    }
-                    document.getElementById("result").innerHTML = `คุณ Click ไปแล้ว&nbsp;<span style="color: red;">${localStorage.clickcount}</span>&nbsp;ครั้ง !.`;
-                }
-            }); 
-        });
-    </script>
+        
+      </style>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
     
+      <script src=""></script>
+    
+    </head>
+
+<body background="123.jpg">
+    <center><h3>แบบฟอร์มลงทะเบียน</h3>
+
+        
+
+            <!----- First Name ---------------------------------------------------------->
+            <tr>
+                <td>ชื่อ</td>
+                <td><input type="text" id="First_Name" name="First_Name" maxlength="30" />
+                </td>
+            </tr>
+
+            <!----- Last Name ---------------------------------------------------------->
+            <tr>
+                <td>นามสกุล</td>
+                <td><input type="text" id="Last_Name" name="Last_Name" maxlength="30" /> 
+                </td>
+            </tr>
+
+            <!----- Date Of Birth -------------------------------------------------------->
+            <tr>
+                <td>วันเดือนปีเกิด</td>
+
+                <td>
+                    <select name="Birthday_day" id="Birthday">
+                        <option value="-1">Day:</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+
+                        <option value="31">31</option>
+                    </select>
+
+                    <select id="Birthday_Month" name="Birthday">
+                        <option value="-1">Month:</option>
+                        <option value="January">Jan</option>
+                        <option value="February">Feb</option>
+                        <option value="March">Mar</option>
+                        <option value="April">Apr</option>
+                        <option value="May">May</option>
+                        <option value="June">Jun</option>
+                        <option value="July">Jul</option>
+                        <option value="August">Aug</option>
+                        <option value="September">Sep</option>
+                        <option value="October">Oct</option>
+                        <option value="November">Nov</option>
+                        <option value="December">Dec</option>
+                    </select>
+
+                    <select name="Birthday_Year" id="Birthday">
+
+                        <option value="-1">Year:</option>
+                        <option value="2012">2012</option>
+                        <option value="2011">2011</option>
+                        <option value="2010">2010</option>
+                        <option value="2009">2009</option>
+                        <option value="2008">2008</option>
+                        <option value="2007">2007</option>
+                        <option value="2006">2006</option>
+                        <option value="2005">2005</option>
+                        <option value="2004">2004</option>
+                        <option value="2003">2003</option>
+                        <option value="2002">2002</option>
+                        <option value="2001">2001</option>
+                        <option value="2000">2000</option>
+
+                        <option value="1999">1999</option>
+                        <option value="1998">1998</option>
+                        <option value="1997">1997</option>
+                        <option value="1996">1996</option>
+                        <option value="1995">1995</option>
+                        <option value="1994">1994</option>
+                        <option value="1993">1993</option>
+                        <option value="1992">1992</option>
+                        <option value="1991">1991</option>
+                        <option value="1990">1990</option>
+
+                        <option value="1989">1989</option>
+                        <option value="1988">1988</option>
+                        <option value="1987">1987</option>
+                        <option value="1986">1986</option>
+                        <option value="1985">1985</option>
+                        <option value="1984">1984</option>
+                        <option value="1983">1983</option>
+                        <option value="1982">1982</option>
+                        <option value="1981">1981</option>
+                        <option value="1980">1980</option>
+                    </select>
+                </td>
+            </tr>
+
+            <!----- Gender ----------------------------------------------------------->
+            <tr>
+                <td>เพศ</td>
+                <td>
+                    ชาย <input type="radio" name="Gender" id="Gender" value="Male" />
+                    หญิง <input type="radio" name="Gender" id="Gender" value="Female" />
+                    
+                </td>
+            </tr>
+                <td align="center"><p id="demo">Location</p>
+    <button onclick="getLocation()">ดูแผนที่</button>
+    <div id="mapholder"></div>
+
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoKoNVKdXRrp8YDgara5W1m2nfTU1dG5g&callback=initMap"
-    type="text/javascript"></script>
-    
-        <script>
-            var x = document.getElementById("demo");
-                getLocation = () => {
-                    if (navigator.geolocation) {
-                    /* glat = prompt("Enter your latitude", 0);
-                    glon = prompt("Enter your longitude", 0);
-                    showPosition(glat, glon); */
-                    console.log(navigator.geolocation)
-                    navigator.geolocation.getCurrentPosition(showPosition, showError);
-                    } else {
-                x.innerHTML = "Geolocation is not supported by this browser.";
+  type="text/javascript"></script>
+    <script>
+    var x = document.getElementById("demo");
+    function getLocation() {
+        if (navigator.geolocation) {
+            /* glat = prompt("Enter your latitude", 0);
+            glon = prompt("Enter your longitude", 0);
+            showPosition(glat, glon); */
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+    function showPosition(position) {
+        lat = position.coords.latitude;
+        lon = position.coords.longitude;
+        //glat = [6.998068, 6.998838] ;
+        //glon = [100.482465, 100.480831];
+        latlon = new google.maps.LatLng(lat, lon)
+        mapholder = document.getElementById('mapholder')
+        mapholder.style.height = '350px';
+        mapholder.style.width = '500px';
+
+        var myOptions = {
+            center: latlon,
+            zoom:16,
+            mapTypeId:google.maps.MapTypeId.ROADMAP,
+            mapTypeControl:false,
+            navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL}
+        }
+
+        var map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
+        var marker = new google.maps.Marker({position:latlon, map:map, title:"You are here!"});
+    }
+
+    function showError(error) {
+       switch(error.code) {
+           case error.PERMISSION_DENIED:
+               x.innerHTML = "User denied the request for Geolocation."
+               break;
+           case error.POSITION_UNAVAILABLE:
+               x.innerHTML = "Location information is unavailable."
+               break;
+           case error.TIMEOUT:
+               x.innerHTML = "The request to get user location timed out."
+               break;
+           case error.UNKNOWN_ERROR:
+               x.innerHTML = "An unknown error occurred."
+               break;
+       }
+   }
+        </script>
+                </td>
+
+            </tr>
+         <!----- Submit and Reset ------------------------------------------------->
+         <tr><br>
+            <td colspan="2" align="center">
+                <input type="button" value="Submit" onclick="validate_all(true),alert('บันทึกข้อมูลเสร็จสิ้น')">
+                <input type="reset" value="Reset" onclick="document.location.reload(true)">
+   <script>
+   function chkUsername() {
+       if(typeof(Storage) !== "undefined") {
+           if (localStorage.username) {
+               document.getElementById("div1").innerHTML = localStorage.username;
+           } else {
+               document.getElementById("div1").innerHTML = "<input type='text' id='username'>";
+           }
+       } else {
+           document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+       }
+   }
+   function saveUsername() {
+       uname = document.getElementById("username");
+       localStorage.username = uname.value;
+       chkUsername();
+   }
+   function delUsername() {
+       localStorage.removeItem("username");
+       chkUsername();
+   }
+   </script>
+            </td>
+        <tr>
+            <td colspan="2" align="center">
+                <br>
+                    User Name:<div id="div1"></div>
+                    Password:<div id="div2"><input type="password" id="password"></div>
+                    <p><button onclick="saveUsername()" type="button">Save</button>
+                        <button onclick="delUsername()" type="button">Clear</button></p>
+                    <div id="result"></div>
+                </script>
+                    <br>
+                    <input type="button" value="เข้าสู่ระบบ" onclick="dialog()"> 
+                    <input type="reset" value="Reset" onclick="document.location.reload(true)" >
+                    <dialog id="dialog">กำลังเข้าสู่ระบบ
+                    <br>
+                    <br>
+                        <button onclick="getLocation()">ตกลง</button>
+                    </dialog>
+                    <script>
+                        function dialog() {
+                          var x=document.getElementById("dialog");
+                          x.open=true
                     }
-                }
+                    </script>
+                    <br>
+                 </center>
+            </td>
+        </center>
 
-                showPosition = (position) => {
-                    lat = position.coords.latitude;
-                    lon = position.coords.longitude;
-                    //glat = [6.998068, 6.998838] ;
-                    //glon = [100.482465, 100.480831];
-                    latlon = new google.maps.LatLng(lat, lon)
-                    mapholder = document.getElementById('mapholder')
-                    mapholder.style.height = '350px';
-                    mapholder.style.width = '460px';
 
-                var myOptions = {
-                    center: latlon,
-                    zoom:16,
-                    mapTypeId:google.maps.MapTypeId.ROADMAP,
-                    mapTypeControl:false,
-                    navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL}
-                }
+    <script>
+        function validate_all() {
+            //first name--->
+            var fname = document.getElementById("First_Name");
+            console.log(fname.value);
+            if (fname.value == "") {
+                alert("กรุณาใส่ชื่อ");
+                fname.focus();
+            } else if (fname.length > 30) {
+                alert("First name not more than 30 characters!")
+                fname.focus();
+            }
 
-                var map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
-                var marker = new google.maps.Marker({position:latlon, map:map, title:"You are here!"});
-                }
+            //last name--->
+            var lname = document.getElementById("Last_Name");
+            if (lname.value == "") {
+                alert("กรุณาใส่นามสกุล");
+                lname.focus();
+            } else if (lname.length > 30) {
+                alert("Last name not more than 30 characters!")
+                lname.focus();
+            }
 
-                showError = (error) => {
-                    switch(error.code) {
-                        case error.PERMISSION_DENIED:
-                        x.innerHTML = "User denied the request for Geolocation."
-                    break;
-                    case error.POSITION_UNAVAILABLE:
-                        x.innerHTML = "Location information is unavailable."
-                    break;
-                    case error.TIMEOUT:
-                        x.innerHTML = "The request to get user location timed out."
-                    break;
-                    case error.UNKNOWN_ERROR:
-                        x.innerHTML = "An unknown error occurred."
-                    break;
-                    }
-                }
- 
+            //Email id--->
+            var email = document.getElementById("Email_Id");
+            if (email.value == "") {
+                alert("กรุณาใส่ Email ");
+                email.focus();
+            }
+
+            //Mobile Number--->
+            var mobile = document.getElementById("Mobile_Number");
+            if (mobile.value == "") {
+                alert("กรุณาใส่เบอร์โทรศัพท์");
+                mobile.focus();
+            }
+
+            //Address--->
+            var address = document.getElementById("Address");
+            if (address.value == "") {ห
+                alert("กรุณากรอกที่อยู่");
+                address.focus();
+            }
+
+            //Country--->
+            var country = document.getElementById("Country");
+            if (country.value == "") {
+                alert("กรุณาใส่ประเทศ");
+                country.focus();
+            }
+
+        }
+        
     </script>
-</center>
+
+
+
+
 </body>
-</html>
+
