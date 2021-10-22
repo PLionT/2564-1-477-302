@@ -26,16 +26,9 @@
 		<div class="collapse navbar-collapse" id="navbar1">
 			<ul class="nav navbar-nav navbar-right">
 				<!--6.if already logged in, change menu items -->
-				<?php if (isset($_SESSION['id'])) { ?>
-					<li><p class="navbar-text">Signed in as <?php echo $_SESSION['name']; ?></p></li>
-					<li><a href="logout.php">Log Out</a></li>
-				<?php } else { ?>
 					<li><a href="login.php">Login</a></li>
 					<li><a href="register.php">Sign Up</a></li>
 					<li><a href="admin_login.php">Admin</a></li>
-				<?php } ?>
-
-
 			</ul>
 		</div>
 	</div>

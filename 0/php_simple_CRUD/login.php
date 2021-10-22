@@ -1,32 +1,10 @@
 <?php
 		//4.check login info from users table
-		//start using session
-		session_start();
-
-		include_once 'dbconnect.php';
-
-		//check whether login button is clicked
-		if (isset($_POST['login'])) {
-			$email = $_POST['login-email'];
-			$passwd = $_POST['login-password'];
-
-			$sql = "SELECT * FROM users WHERE user_email = '" . $email . "' AND user_passwd = '" . md5 ($passwd) . "'";
-
-			$result = mysqli_query($con, $sql);
-			if ($row = mysqli_fetch_array($result)) {
-				$_SESSION['id'] = $row['user_id'];
-				$_SESSION['name'] = $row['user_name'];
-				header("location: index.php");
-			} else {
-				$error_msg = "Incorrect e-mail or password.";
-			}
-
-		}
 
 ?>
 
 <!DOCTYPE html>
-<html> 
+<html>
 <head>
 	<title>PHP Login</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" >
@@ -66,12 +44,12 @@
 
 					<div class="form-group">
 						<label for="name">Email</label>
-						<input type="text" name="login-email" placeholder="Your Email" required class="form-control" />
+						<input type="text" name="email" placeholder="Your Email" required class="form-control" />
 					</div>
 
 					<div class="form-group">
 						<label for="name">Password</label>
-						<input type="password" name="login-password" placeholder="Your Password" required class="form-control" />
+						<input type="password" name="password" placeholder="Your Password" required class="form-control" />
 					</div>
 
 					<div class="form-group">
@@ -80,13 +58,6 @@
 				</fieldset>
 			</form>
 			<!--5.display message -->
-			<span class="text-danger">
-				<?php
-					if (isset($error_msg)) {
-						echo $error_msg;
-					} 
-				?>
-			</span>
 
 		</div>
 	</div>

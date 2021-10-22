@@ -1,34 +1,12 @@
 <?php
-		//4.check login info from users table
-		//start using session
-		session_start();
-
-		include_once 'dbconnect.php';
-
-		//check whether login button is clicked
-		if (isset($_POST['login'])) {
-			$email = $_POST['login-email'];
-			$passwd = $_POST['login-password'];
-
-			$sql = "SELECT * FROM users WHERE user_email = '" . $email . "' AND user_passwd = '" . md5 ($passwd) . "'";
-
-			$result = mysqli_query($con, $sql);
-			if ($row = mysqli_fetch_array($result)) {
-				$_SESSION['id'] = $row['user_id'];
-				$_SESSION['name'] = $row['user_name'];
-				header("location: index.php");
-			} else {
-				$error_msg = "Incorrect e-mail or password.";
-			}
-
-		}
+		//7.check admin username and password, set admin name as "admin" and password as "pass1234"
 
 ?>
 
 <!DOCTYPE html>
-<html> 
+<html>
 <head>
-	<title>PHP Login</title>
+	<title>PHP Admin | Login</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" >
 	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
 </head>
@@ -49,9 +27,9 @@
 		<!-- menu items -->
 		<div class="collapse navbar-collapse" id="navbar1">
 			<ul class="nav navbar-nav navbar-right">
-				<li class="active"><a href="login.php">Login</a></li>
+				<li><a href="login.php">Login</a></li>
 				<li><a href="register.php">Sign Up</a></li>
-				<li><a href="admin_login.php">Admin</a></li>
+				<li class="active"><a href="admin_login.php">Admin</a></li>
 			</ul>
 		</div>
 	</div>
@@ -65,13 +43,13 @@
 					<legend>Login</legend>
 
 					<div class="form-group">
-						<label for="name">Email</label>
-						<input type="text" name="login-email" placeholder="Your Email" required class="form-control" />
+						<label for="name">Admin Name</label>
+						<input type="text" name="admin_name" placeholder="Admin Name" required class="form-control" />
 					</div>
 
 					<div class="form-group">
 						<label for="name">Password</label>
-						<input type="password" name="login-password" placeholder="Your Password" required class="form-control" />
+						<input type="password" name="password" placeholder="Your Password" required class="form-control" />
 					</div>
 
 					<div class="form-group">
@@ -79,20 +57,8 @@
 					</div>
 				</fieldset>
 			</form>
-			<!--5.display message -->
-			<span class="text-danger">
-				<?php
-					if (isset($error_msg)) {
-						echo $error_msg;
-					} 
-				?>
-			</span>
-
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-4 col-md-offset-4 text-center">
-		New User? <a href="register.php">Sign Up Here</a>
+			<!--8.display message -->
+			
 		</div>
 	</div>
 </div>
